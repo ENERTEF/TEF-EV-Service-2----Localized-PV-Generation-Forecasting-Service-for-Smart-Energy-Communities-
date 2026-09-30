@@ -1,0 +1,144 @@
+{
+  "model_version": "1.0.0",
+  "trained_at": "2026-09-30T20:18:33+00:00",
+  "plant_id": "copal-ecc",
+  "capacity_kwc": 973.81,
+  "algorithm": "sklearn_gbr",
+  "params": {
+    "loss": "quantile",
+    "init": "zero",
+    "n_estimators": 300,
+    "max_depth": 4,
+    "learning_rate": 0.05,
+    "min_samples_leaf": 40,
+    "subsample": 0.85,
+    "random_state": 42
+  },
+  "quantiles": {
+    "q10": 0.1,
+    "q50": 0.5,
+    "q90": 0.9
+  },
+  "weather_source": "none",
+  "windows": {
+    "train": [
+      "2023-10-11T22:00:00+00:00",
+      "2025-11-19T22:45:00+00:00"
+    ],
+    "holdout": [
+      "2025-11-19T22:45:00+00:00",
+      "2026-01-18T22:45:00+00:00"
+    ]
+  },
+  "blocks": {
+    "intraday": {
+      "leads_h": [
+        0.0,
+        6.0
+      ],
+      "issue_hours_utc": [
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ]
+    },
+    "day_ahead": {
+      "leads_h": [
+        6.0,
+        24.0
+      ],
+      "issue_hours_utc": [
+        0,
+        6,
+        12,
+        18
+      ]
+    }
+  },
+  "envelope": {
+    "kw_per_wm2": 0.798429,
+    "max_kw": 661.8,
+    "n_slots": 26111,
+    "quantile": 0.995,
+    "method": "quantile of pv / clear-sky GHI over slots with clear-sky GHI >= 200 W/m\u00b2 (Ineichen, TL=3)"
+  },
+  "n_train": {
+    "intraday": 95736,
+    "day_ahead": 104108
+  },
+  "holdout_by_block": {
+    "intraday": {
+      "n": 5265,
+      "mae_kw": 18.194,
+      "rmse_kw": 24.73,
+      "bias_kw": -0.245,
+      "nmae_capacity_pct": 1.868,
+      "r2": 0.514,
+      "coverage_p10_p90_pct": 71.7,
+      "persistence_mae_kw": 24.608,
+      "skill_vs_persistence_pct": 26.06,
+      "clear_sky_persistence_mae_kw": 20.838
+    },
+    "day_ahead": {
+      "n": 5253,
+      "mae_kw": 23.229,
+      "rmse_kw": 29.981,
+      "bias_kw": -2.636,
+      "nmae_capacity_pct": 2.385,
+      "r2": 0.286,
+      "coverage_p10_p90_pct": 67.3,
+      "persistence_mae_kw": 24.395,
+      "skill_vs_persistence_pct": 4.78,
+      "clear_sky_persistence_mae_kw": 24.646
+    }
+  },
+  "holdout_by_horizon": {
+    "< 1 h": {
+      "n": 960,
+      "mae_kw": 12.085,
+      "rmse_kw": 17.633,
+      "bias_kw": -0.563,
+      "nmae_capacity_pct": 1.241,
+      "r2": 0.752,
+      "coverage_p10_p90_pct": 75.2,
+      "persistence_mae_kw": 23.708,
+      "skill_vs_persistence_pct": 49.03
+    },
+    "1\u20136 h": {
+      "n": 4305,
+      "mae_kw": 19.557,
+      "rmse_kw": 26.05,
+      "bias_kw": -0.174,
+      "nmae_capacity_pct": 2.008,
+      "r2": 0.46,
+      "coverage_p10_p90_pct": 70.9,
+      "persistence_mae_kw": 24.809,
+      "skill_vs_persistence_pct": 21.17
+    },
+    "day-ahead (6\u201324 h)": {
+      "n": 5253,
+      "mae_kw": 23.229,
+      "rmse_kw": 29.981,
+      "bias_kw": -2.636,
+      "nmae_capacity_pct": 2.385,
+      "r2": 0.286,
+      "coverage_p10_p90_pct": 67.3,
+      "persistence_mae_kw": 24.395,
+      "skill_vs_persistence_pct": 4.78
+    }
+  },
+  "environment": {
+    "python": "3.11.9",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.5.2",
+    "lightgbm": "4.5.0",
+    "xgboost": "2.1.3",
+    "joblib": "1.4.2"
+  }
+}

@@ -409,3 +409,26 @@ Required technical artifacts include:
   * access control policies
   * compliance with data protection requirements
 
+
+---
+
+# 7. Implementation in this Repository (version 1.0)
+
+| Path | Content |
+| ---- | ------- |
+| [`ECC_PV_Forecasting.ipynb`](ECC_PV_Forecasting.ipynb) | Self-contained implementation: data → physics features → algorithm selection → training → evaluation → export |
+| [`Technical Description.md`](Technical%20Description.md) | What was built, the algorithm selection and the results |
+| `Data/ECC_master_PV_EMOB1_EMOB2_15min.csv` | Leneda 15-minute ECC series (`PV_TotalProduction_kW` is the forecast target) |
+| `Data/models/` | Trained models (`.joblib`), plant envelope, metrics, algorithm bake-off and model card — published on Hugging Face as [`EnerTEF/Service2-PvForecast`](https://huggingface.co/EnerTEF/Service2-PvForecast) |
+| `requirements.txt` | Python dependencies |
+
+**Implemented scope:** intraday (up to 6 h) and day-ahead (up to 24 h) P10 / P50 / P90 PV forecasts
+at 15-minute resolution, bounded by a fitted plant envelope and scored against persistence. The
+optional 48-hour and 7-day horizons are not part of version 1.0.
+
+**Quickstart**
+
+```bash
+pip install -r requirements.txt
+jupyter lab ECC_PV_Forecasting.ipynb
+```

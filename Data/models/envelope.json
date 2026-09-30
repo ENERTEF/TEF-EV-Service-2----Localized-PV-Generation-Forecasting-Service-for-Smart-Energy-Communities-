@@ -1,0 +1,8 @@
+{
+  "kw_per_wm2": 0.798429,
+  "max_kw": 661.8,
+  "n_slots": 26111,
+  "quantile": 0.995,
+  "method": "quantile of pv / clear-sky GHI over slots with clear-sky GHI >= 200 W/m\u00b2 (Ineichen, TL=3)",
+  "fitted_at": "2026-09-30T20:18:33+00:00"
+}
