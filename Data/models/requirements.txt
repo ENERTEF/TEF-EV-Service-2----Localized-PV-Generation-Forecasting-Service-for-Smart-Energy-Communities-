@@ -1,0 +1,4 @@
+# Environment in which these models were exported and example.py runs (LightGBM text files need no pickle: any lightgbm >= 4 loads them).
+lightgbm==4.7.0
+numpy==2.4.6
+pandas==3.0.6

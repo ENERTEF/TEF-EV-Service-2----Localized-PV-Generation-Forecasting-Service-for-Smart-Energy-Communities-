@@ -1,0 +1,245 @@
+{
+  "trained_at": "2026-10-02T13:32:13+00:00",
+  "plant_id": "copal-ecc",
+  "capacity_kwc": 973.81,
+  "latitude": 49.70673,
+  "longitude": 6.48714,
+  "algorithm": "lightgbm quantile regression (3 quantiles per block)",
+  "lightgbm_params": {
+    "n_estimators": 300,
+    "max_depth": 4,
+    "num_leaves": 16,
+    "learning_rate": 0.05,
+    "min_child_samples": 40,
+    "subsample": 0.85,
+    "subsample_freq": 1,
+    "random_state": 42,
+    "verbose": -1,
+    "deterministic": true,
+    "force_row_wise": true
+  },
+  "quantiles": {
+    "q10": 0.1,
+    "q50": 0.5,
+    "q90": 0.9
+  },
+  "target": "clear-sky index = PV / clear-sky power, clipped to [0, 1.3]",
+  "shipped_configuration": {
+    "nwp": true,
+    "env": "slope",
+    "conformal": true,
+    "config": "+weather"
+  },
+  "windows": {
+    "train_before": "2025-11-19T22:45:00+00:00",
+    "band_calibration": [
+      "2025-11-19T22:45:00+00:00",
+      "2026-01-18T22:45:00+00:00"
+    ]
+  },
+  "clear_sky": {
+    "model": "NOAA solar position + Ineichen-Perez, Linke turbidity 3.0, evaluated at the slot midpoint",
+    "night_ghi_wm2": 10.0,
+    "min_clear_sky_kw_for_index": 4.86905
+  },
+  "envelope": {
+    "type": "slope",
+    "kw_per_wm2": 0.799626,
+    "max_kw": 662.723
+  },
+  "blocks": {
+    "intraday": {
+      "leads_h": [
+        0.0,
+        6.0
+      ],
+      "issue_hours_utc": [
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ],
+      "features": [
+        "clear_sky_kw",
+        "clear_sky_ghi_wm2",
+        "cos_zenith",
+        "tod_sin",
+        "tod_cos",
+        "doy_sin",
+        "doy_cos",
+        "lead_time_hours",
+        "has_recent",
+        "kcs_recent",
+        "pv_last_kw",
+        "kcs_last",
+        "pv_lag_24h_kw",
+        "kcs_lag_24h",
+        "has_weather",
+        "ghi_fc_wm2",
+        "dni_fc_wm2",
+        "dhi_fc_wm2",
+        "cloud_fc_pct",
+        "temp_fc_c",
+        "wind_fc_ms",
+        "kcs_fc",
+        "kcs_fc_ens",
+        "nwp_lead_d"
+      ],
+      "quantile_files": {
+        "q10": "pv_intraday_q10.txt",
+        "q50": "pv_intraday_q50.txt",
+        "q90": "pv_intraday_q90.txt"
+      },
+      "band_offsets": [
+        {
+          "lead_from_h": 0.0,
+          "lead_to_h": 1.0,
+          "lower": 0.06463691080826453,
+          "upper": -0.0019044852541394664,
+          "n_scores": 720
+        },
+        {
+          "lead_from_h": 1.0,
+          "lead_to_h": 3.0,
+          "lower": 0.07401413588778756,
+          "upper": -0.005552046430262779,
+          "n_scores": 1307
+        },
+        {
+          "lead_from_h": 3.0,
+          "lead_to_h": 6.0,
+          "lower": 0.08265939064588324,
+          "upper": -0.00849885701531483,
+          "n_scores": 1883
+        }
+      ]
+    },
+    "day_ahead": {
+      "leads_h": [
+        6.0,
+        24.0
+      ],
+      "issue_hours_utc": [
+        0,
+        6,
+        12,
+        18
+      ],
+      "features": [
+        "clear_sky_kw",
+        "clear_sky_ghi_wm2",
+        "cos_zenith",
+        "tod_sin",
+        "tod_cos",
+        "doy_sin",
+        "doy_cos",
+        "lead_time_hours",
+        "has_recent",
+        "kcs_recent",
+        "pv_last_kw",
+        "kcs_last",
+        "pv_lag_24h_kw",
+        "kcs_lag_24h",
+        "has_weather",
+        "ghi_fc_wm2",
+        "dni_fc_wm2",
+        "dhi_fc_wm2",
+        "cloud_fc_pct",
+        "temp_fc_c",
+        "wind_fc_ms",
+        "kcs_fc",
+        "kcs_fc_ens",
+        "nwp_lead_d"
+      ],
+      "quantile_files": {
+        "q10": "pv_day_ahead_q10.txt",
+        "q50": "pv_day_ahead_q50.txt",
+        "q90": "pv_day_ahead_q90.txt"
+      },
+      "band_offsets": [
+        {
+          "lead_from_h": 6.0,
+          "lead_to_h": 12.0,
+          "lower": 0.0726772232613908,
+          "upper": 0.0,
+          "n_scores": 1307
+        },
+        {
+          "lead_from_h": 12.0,
+          "lead_to_h": 18.0,
+          "lower": 0.07510497028925399,
+          "upper": -0.0007523039431904143,
+          "n_scores": 1307
+        },
+        {
+          "lead_from_h": 18.0,
+          "lead_to_h": 24.0,
+          "lower": 0.09221759941245584,
+          "upper": -7.132108447279947e-06,
+          "n_scores": 1307
+        }
+      ]
+    }
+  },
+  "weather": {
+    "source": "Open-Meteo Previous Runs API (CC BY 4.0; free tier non-commercial)",
+    "location": [
+      49.70673,
+      6.48714
+    ],
+    "primary_model": "icon_eu",
+    "variables": {
+      "shortwave_radiation": "ghi",
+      "direct_normal_irradiance": "dni",
+      "diffuse_radiation": "dhi",
+      "cloud_cover": "cloud",
+      "temperature_2m": "temp",
+      "wind_speed_10m": "wind"
+    },
+    "ensemble_ghi_models": [
+      "icon_eu",
+      "ecmwf_ifs025",
+      "meteofrance_arpege_europe"
+    ],
+    "lead_rule": "previous_day1 when the lead (target \u2212 issue) \u2264 18 h, else previous_day2; a run is usable 6 h after its nominal time",
+    "radiation_convention": "mean of the preceding hour (value labelled at the end of the hour); cloud/temperature/wind interpolated to the slot midpoint",
+    "feature_map": {
+      "ghi_fc_wm2/dni_fc_wm2/dhi_fc_wm2": "icon_eu shortwave / direct normal / diffuse radiation",
+      "kcs_fc": "icon_eu GHI \u00f7 hourly-mean clear-sky GHI",
+      "kcs_fc_ens": "mean of that ratio over the three models (\u2265 2 present)",
+      "nwp_lead_d": "1 or 2 (which previous-day offset was used)",
+      "missing": -1.0
+    }
+  },
+  "conformal": {
+    "method": "conformalized quantile regression, asymmetric, per lead bucket, kcs units",
+    "alpha": 0.2,
+    "window_days_when_online": 45,
+    "min_scores": 300,
+    "lead_buckets": {
+      "intraday": [
+        0.0,
+        1.0,
+        3.0,
+        6.0
+      ],
+      "day_ahead": [
+        6.0,
+        12.0,
+        18.0,
+        24.0
+      ]
+    },
+    "this_release": "frozen offsets from the last 45 days of the calibration window; update online if outcomes are available",
+    "enabled": true
+  },
+  "environment": {
+    "lightgbm": "4.7.0",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6"
+  }
+}

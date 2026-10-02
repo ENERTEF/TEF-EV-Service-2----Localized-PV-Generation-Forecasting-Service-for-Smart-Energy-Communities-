@@ -1,144 +1,1133 @@
 {
-  "model_version": "1.0.0",
-  "trained_at": "2026-09-30T20:18:33+00:00",
-  "plant_id": "copal-ecc",
-  "capacity_kwc": 973.81,
-  "algorithm": "sklearn_gbr",
-  "params": {
-    "loss": "quantile",
-    "init": "zero",
-    "n_estimators": 300,
-    "max_depth": 4,
-    "learning_rate": 0.05,
-    "min_samples_leaf": 40,
-    "subsample": 0.85,
-    "random_state": 42
+  "trained_at": "2026-10-02T13:32:13+00:00",
+  "shipped_configuration": {
+    "nwp": true,
+    "env": "slope",
+    "conformal": true,
+    "config": "+weather"
   },
-  "quantiles": {
-    "q10": 0.1,
-    "q50": 0.5,
-    "q90": 0.9
-  },
-  "weather_source": "none",
-  "windows": {
-    "train": [
-      "2023-10-11T22:00:00+00:00",
-      "2025-11-19T22:45:00+00:00"
+  "validation": {
+    "folds": [
+      {
+        "name": "winter 2025 (Jan\u2013Mar)",
+        "train_before": "2024-11-02T00:00:00+00:00",
+        "test_from": "2025-01-01T00:00:00+00:00",
+        "test_to": "2025-04-01T00:00:00+00:00"
+      },
+      {
+        "name": "spring 2025 (Apr\u2013Jun)",
+        "train_before": "2025-01-31T00:00:00+00:00",
+        "test_from": "2025-04-01T00:00:00+00:00",
+        "test_to": "2025-07-01T00:00:00+00:00"
+      },
+      {
+        "name": "summer 2025 (Jul\u2013Sep)",
+        "train_before": "2025-05-02T00:00:00+00:00",
+        "test_from": "2025-07-01T00:00:00+00:00",
+        "test_to": "2025-10-01T00:00:00+00:00"
+      },
+      {
+        "name": "autumn 2025 (Oct\u201319 Nov)",
+        "train_before": "2025-08-02T00:00:00+00:00",
+        "test_from": "2025-10-01T00:00:00+00:00",
+        "test_to": "2025-11-19T22:45:00+00:00"
+      },
+      {
+        "name": "winter hold-out (19 Nov\u201318 Jan)",
+        "train_before": "2025-09-20T22:45:00+00:00",
+        "test_from": "2025-11-19T22:45:00+00:00",
+        "test_to": "2026-01-18T22:45:00+00:00"
+      }
     ],
-    "holdout": [
-      "2025-11-19T22:45:00+00:00",
-      "2026-01-18T22:45:00+00:00"
+    "pooled": [
+      {
+        "block": "intraday",
+        "configuration": "base",
+        "slots": 47375,
+        "MAE (kW)": 57.4487874154,
+        "nMAE (% of kWc)": 5.899383598,
+        "skill vs persistence (%)": 19.0105689916,
+        "bias (kW)": -14.4694511669,
+        "R\u00b2": 0.7676343834,
+        "P10\u2013P90 coverage (%)": 63.5377308707,
+        "band width (kW)": 151.4374834435,
+        "interval score (kW)": 256.5046046275,
+        "mean pinball (kW)": 18.1249513901
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather",
+        "slots": 47375,
+        "MAE (kW)": 44.6832063934,
+        "nMAE (% of kWc)": 4.5884932783,
+        "skill vs persistence (%)": 37.0070697007,
+        "bias (kW)": -8.8702469186,
+        "R\u00b2": 0.8502510256,
+        "P10\u2013P90 coverage (%)": 65.8047493404,
+        "band width (kW)": 117.1288552434,
+        "interval score (kW)": 204.3878815873,
+        "mean pinball (kW)": 14.2601304518
+      },
+      {
+        "block": "intraday",
+        "configuration": "+envelope",
+        "slots": 47375,
+        "MAE (kW)": 58.4505781336,
+        "nMAE (% of kWc)": 6.0022569221,
+        "skill vs persistence (%)": 17.5982770372,
+        "bias (kW)": -15.3780388684,
+        "R\u00b2": 0.7595071748,
+        "P10\u2013P90 coverage (%)": 64.2870712401,
+        "band width (kW)": 151.6393953544,
+        "interval score (kW)": 260.043970287,
+        "mean pinball (kW)": 18.4098953652
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather +envelope",
+        "slots": 47375,
+        "MAE (kW)": 44.0396108874,
+        "nMAE (% of kWc)": 4.5224028186,
+        "skill vs persistence (%)": 37.9143897012,
+        "bias (kW)": -7.3164564119,
+        "R\u00b2": 0.8520199396,
+        "P10\u2013P90 coverage (%)": 65.3129287599,
+        "band width (kW)": 118.0707609975,
+        "interval score (kW)": 205.9542958314,
+        "mean pinball (kW)": 14.2050783423
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "base",
+        "slots": 51423,
+        "MAE (kW)": 68.5787735062,
+        "nMAE (% of kWc)": 7.0423155961,
+        "skill vs persistence (%)": -1.1323257517,
+        "bias (kW)": -18.8045094356,
+        "R\u00b2": 0.6593213774,
+        "P10\u2013P90 coverage (%)": 60.2181903039,
+        "band width (kW)": 159.5023199561,
+        "interval score (kW)": 292.6427826918,
+        "mean pinball (kW)": 21.1845550074
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather",
+        "slots": 51423,
+        "MAE (kW)": 44.3799971727,
+        "nMAE (% of kWc)": 4.5573568943,
+        "skill vs persistence (%)": 34.5533304045,
+        "bias (kW)": -9.2089238572,
+        "R\u00b2": 0.8454121003,
+        "P10\u2013P90 coverage (%)": 64.5431032806,
+        "band width (kW)": 117.7353871513,
+        "interval score (kW)": 206.7720245971,
+        "mean pinball (kW)": 14.2890670154
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+envelope",
+        "slots": 51423,
+        "MAE (kW)": 65.9177520117,
+        "nMAE (% of kWc)": 6.7690567987,
+        "skill vs persistence (%)": 2.7918519327,
+        "bias (kW)": -14.3300436511,
+        "R\u00b2": 0.6831425398,
+        "P10\u2013P90 coverage (%)": 59.5764541159,
+        "band width (kW)": 152.5842500666,
+        "interval score (kW)": 294.5727712392,
+        "mean pinball (kW)": 20.8053843766
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather +envelope",
+        "slots": 51423,
+        "MAE (kW)": 43.7913587648,
+        "nMAE (% of kWc)": 4.496909948,
+        "skill vs persistence (%)": 35.4213886705,
+        "bias (kW)": -6.6595590357,
+        "R\u00b2": 0.846931018,
+        "P10\u2013P90 coverage (%)": 66.0696575462,
+        "band width (kW)": 119.478169495,
+        "interval score (kW)": 200.8207128757,
+        "mean pinball (kW)": 13.9925835566
+      }
+    ],
+    "bootstrap_vs_base": [
+      {
+        "block": "intraday",
+        "configuration vs base": "+weather",
+        "change in MAE (%)": -22.2,
+        "90 % interval low": -24.9,
+        "90 % interval high": -19.4
+      },
+      {
+        "block": "intraday",
+        "configuration vs base": "+envelope",
+        "change in MAE (%)": 1.7,
+        "90 % interval low": 0.9,
+        "90 % interval high": 2.7
+      },
+      {
+        "block": "intraday",
+        "configuration vs base": "+weather +envelope",
+        "change in MAE (%)": -23.3,
+        "90 % interval low": -26.1,
+        "90 % interval high": -20.5
+      },
+      {
+        "block": "day_ahead",
+        "configuration vs base": "+weather",
+        "change in MAE (%)": -35.3,
+        "90 % interval low": -38.6,
+        "90 % interval high": -31.8
+      },
+      {
+        "block": "day_ahead",
+        "configuration vs base": "+envelope",
+        "change in MAE (%)": -3.9,
+        "90 % interval low": -6.1,
+        "90 % interval high": -1.6
+      },
+      {
+        "block": "day_ahead",
+        "configuration vs base": "+weather +envelope",
+        "change in MAE (%)": -36.1,
+        "90 % interval low": -39.5,
+        "90 % interval high": -32.5
+      }
+    ],
+    "conformal": [
+      {
+        "block": "intraday",
+        "configuration": "base",
+        "fold": "winter 2025 (Jan\u2013Mar)",
+        "coverage raw (%)": 68.0,
+        "coverage conformal (%)": 80.4,
+        "width raw (kW)": 101.4,
+        "width conformal (kW)": 116.1,
+        "interval score raw (kW)": 168.4,
+        "interval score conformal (kW)": 151.3
+      },
+      {
+        "block": "intraday",
+        "configuration": "base",
+        "fold": "spring 2025 (Apr\u2013Jun)",
+        "coverage raw (%)": 54.2,
+        "coverage conformal (%)": 78.7,
+        "width raw (kW)": 206.7,
+        "width conformal (kW)": 234.1,
+        "interval score raw (kW)": 356.0,
+        "interval score conformal (kW)": 306.8
+      },
+      {
+        "block": "intraday",
+        "configuration": "base",
+        "fold": "summer 2025 (Jul\u2013Sep)",
+        "coverage raw (%)": 62.3,
+        "coverage conformal (%)": 77.3,
+        "width raw (kW)": 188.4,
+        "width conformal (kW)": 223.5,
+        "interval score raw (kW)": 331.4,
+        "interval score conformal (kW)": 310.8
+      },
+      {
+        "block": "intraday",
+        "configuration": "base",
+        "fold": "autumn 2025 (Oct\u201319 Nov)",
+        "coverage raw (%)": 76.9,
+        "coverage conformal (%)": 82.5,
+        "width raw (kW)": 107.8,
+        "width conformal (kW)": 119.6,
+        "interval score raw (kW)": 149.3,
+        "interval score conformal (kW)": 149.3
+      },
+      {
+        "block": "intraday",
+        "configuration": "base",
+        "fold": "winter hold-out (19 Nov\u201318 Jan)",
+        "coverage raw (%)": 69.0,
+        "coverage conformal (%)": 73.7,
+        "width raw (kW)": 51.8,
+        "width conformal (kW)": 56.9,
+        "interval score raw (kW)": 81.6,
+        "interval score conformal (kW)": 80.1
+      },
+      {
+        "block": "intraday",
+        "configuration": "base",
+        "fold": "pooled",
+        "coverage raw (%)": 63.5,
+        "coverage conformal (%)": 78.5,
+        "width raw (kW)": 151.4,
+        "width conformal (kW)": 174.1,
+        "interval score raw (kW)": 256.5,
+        "interval score conformal (kW)": 232.8
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather",
+        "fold": "winter 2025 (Jan\u2013Mar)",
+        "coverage raw (%)": 72.8,
+        "coverage conformal (%)": 79.3,
+        "width raw (kW)": 81.8,
+        "width conformal (kW)": 95.0,
+        "interval score raw (kW)": 131.2,
+        "interval score conformal (kW)": 129.5
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather",
+        "fold": "spring 2025 (Apr\u2013Jun)",
+        "coverage raw (%)": 55.8,
+        "coverage conformal (%)": 76.9,
+        "width raw (kW)": 144.5,
+        "width conformal (kW)": 167.6,
+        "interval score raw (kW)": 280.1,
+        "interval score conformal (kW)": 235.6
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather",
+        "fold": "summer 2025 (Jul\u2013Sep)",
+        "coverage raw (%)": 64.9,
+        "coverage conformal (%)": 78.8,
+        "width raw (kW)": 154.2,
+        "width conformal (kW)": 178.3,
+        "interval score raw (kW)": 259.9,
+        "interval score conformal (kW)": 241.9
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather",
+        "fold": "autumn 2025 (Oct\u201319 Nov)",
+        "coverage raw (%)": 76.5,
+        "coverage conformal (%)": 80.5,
+        "width raw (kW)": 89.8,
+        "width conformal (kW)": 97.2,
+        "interval score raw (kW)": 130.3,
+        "interval score conformal (kW)": 130.5
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather",
+        "fold": "winter hold-out (19 Nov\u201318 Jan)",
+        "coverage raw (%)": 70.1,
+        "coverage conformal (%)": 73.8,
+        "width raw (kW)": 46.0,
+        "width conformal (kW)": 49.0,
+        "interval score raw (kW)": 78.8,
+        "interval score conformal (kW)": 77.4
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather",
+        "fold": "pooled",
+        "coverage raw (%)": 65.8,
+        "coverage conformal (%)": 78.0,
+        "width raw (kW)": 117.1,
+        "width conformal (kW)": 134.5,
+        "interval score raw (kW)": 204.4,
+        "interval score conformal (kW)": 186.0
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather +envelope",
+        "fold": "winter 2025 (Jan\u2013Mar)",
+        "coverage raw (%)": 68.4,
+        "coverage conformal (%)": 79.3,
+        "width raw (kW)": 79.1,
+        "width conformal (kW)": 98.0,
+        "interval score raw (kW)": 138.1,
+        "interval score conformal (kW)": 131.7
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather +envelope",
+        "fold": "spring 2025 (Apr\u2013Jun)",
+        "coverage raw (%)": 56.9,
+        "coverage conformal (%)": 77.0,
+        "width raw (kW)": 147.3,
+        "width conformal (kW)": 171.3,
+        "interval score raw (kW)": 285.4,
+        "interval score conformal (kW)": 241.8
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather +envelope",
+        "fold": "summer 2025 (Jul\u2013Sep)",
+        "coverage raw (%)": 65.9,
+        "coverage conformal (%)": 78.8,
+        "width raw (kW)": 156.2,
+        "width conformal (kW)": 177.7,
+        "interval score raw (kW)": 254.2,
+        "interval score conformal (kW)": 239.5
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather +envelope",
+        "fold": "autumn 2025 (Oct\u201319 Nov)",
+        "coverage raw (%)": 74.0,
+        "coverage conformal (%)": 79.1,
+        "width raw (kW)": 91.5,
+        "width conformal (kW)": 99.9,
+        "interval score raw (kW)": 134.3,
+        "interval score conformal (kW)": 134.3
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather +envelope",
+        "fold": "winter hold-out (19 Nov\u201318 Jan)",
+        "coverage raw (%)": 71.0,
+        "coverage conformal (%)": 74.9,
+        "width raw (kW)": 45.2,
+        "width conformal (kW)": 49.8,
+        "interval score raw (kW)": 76.7,
+        "interval score conformal (kW)": 75.7
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather +envelope",
+        "fold": "pooled",
+        "coverage raw (%)": 65.3,
+        "coverage conformal (%)": 78.0,
+        "width raw (kW)": 118.1,
+        "width conformal (kW)": 136.4,
+        "interval score raw (kW)": 206.0,
+        "interval score conformal (kW)": 187.8
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "base",
+        "fold": "winter 2025 (Jan\u2013Mar)",
+        "coverage raw (%)": 62.6,
+        "coverage conformal (%)": 78.7,
+        "width raw (kW)": 105.1,
+        "width conformal (kW)": 126.4,
+        "interval score raw (kW)": 205.0,
+        "interval score conformal (kW)": 173.0
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "base",
+        "fold": "spring 2025 (Apr\u2013Jun)",
+        "coverage raw (%)": 51.2,
+        "coverage conformal (%)": 79.5,
+        "width raw (kW)": 213.6,
+        "width conformal (kW)": 252.8,
+        "interval score raw (kW)": 409.2,
+        "interval score conformal (kW)": 335.4
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "base",
+        "fold": "summer 2025 (Jul\u2013Sep)",
+        "coverage raw (%)": 60.4,
+        "coverage conformal (%)": 78.4,
+        "width raw (kW)": 193.8,
+        "width conformal (kW)": 237.4,
+        "interval score raw (kW)": 352.1,
+        "interval score conformal (kW)": 331.1
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "base",
+        "fold": "autumn 2025 (Oct\u201319 Nov)",
+        "coverage raw (%)": 73.2,
+        "coverage conformal (%)": 82.6,
+        "width raw (kW)": 111.5,
+        "width conformal (kW)": 131.4,
+        "interval score raw (kW)": 160.3,
+        "interval score conformal (kW)": 160.2
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "base",
+        "fold": "winter hold-out (19 Nov\u201318 Jan)",
+        "coverage raw (%)": 67.6,
+        "coverage conformal (%)": 72.9,
+        "width raw (kW)": 58.7,
+        "width conformal (kW)": 66.2,
+        "interval score raw (kW)": 91.0,
+        "interval score conformal (kW)": 90.0
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "base",
+        "fold": "pooled",
+        "coverage raw (%)": 60.2,
+        "coverage conformal (%)": 78.7,
+        "width raw (kW)": 159.5,
+        "width conformal (kW)": 191.1,
+        "interval score raw (kW)": 292.6,
+        "interval score conformal (kW)": 257.9
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather",
+        "fold": "winter 2025 (Jan\u2013Mar)",
+        "coverage raw (%)": 67.3,
+        "coverage conformal (%)": 78.4,
+        "width raw (kW)": 83.1,
+        "width conformal (kW)": 100.5,
+        "interval score raw (kW)": 143.1,
+        "interval score conformal (kW)": 135.8
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather",
+        "fold": "spring 2025 (Apr\u2013Jun)",
+        "coverage raw (%)": 55.9,
+        "coverage conformal (%)": 78.2,
+        "width raw (kW)": 141.8,
+        "width conformal (kW)": 166.0,
+        "interval score raw (kW)": 276.7,
+        "interval score conformal (kW)": 226.1
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather",
+        "fold": "summer 2025 (Jul\u2013Sep)",
+        "coverage raw (%)": 65.3,
+        "coverage conformal (%)": 78.5,
+        "width raw (kW)": 150.3,
+        "width conformal (kW)": 172.1,
+        "interval score raw (kW)": 248.7,
+        "interval score conformal (kW)": 231.6
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather",
+        "fold": "autumn 2025 (Oct\u201319 Nov)",
+        "coverage raw (%)": 75.1,
+        "coverage conformal (%)": 79.4,
+        "width raw (kW)": 92.0,
+        "width conformal (kW)": 100.0,
+        "interval score raw (kW)": 133.5,
+        "interval score conformal (kW)": 134.3
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather",
+        "fold": "winter hold-out (19 Nov\u201318 Jan)",
+        "coverage raw (%)": 71.4,
+        "coverage conformal (%)": 72.9,
+        "width raw (kW)": 48.7,
+        "width conformal (kW)": 52.3,
+        "interval score raw (kW)": 82.9,
+        "interval score conformal (kW)": 83.7
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather",
+        "fold": "pooled",
+        "coverage raw (%)": 64.5,
+        "coverage conformal (%)": 77.9,
+        "width raw (kW)": 117.7,
+        "width conformal (kW)": 136.0,
+        "interval score raw (kW)": 206.8,
+        "interval score conformal (kW)": 185.3
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather +envelope",
+        "fold": "winter 2025 (Jan\u2013Mar)",
+        "coverage raw (%)": 67.3,
+        "coverage conformal (%)": 78.2,
+        "width raw (kW)": 82.8,
+        "width conformal (kW)": 100.3,
+        "interval score raw (kW)": 143.4,
+        "interval score conformal (kW)": 136.6
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather +envelope",
+        "fold": "spring 2025 (Apr\u2013Jun)",
+        "coverage raw (%)": 60.8,
+        "coverage conformal (%)": 78.8,
+        "width raw (kW)": 144.9,
+        "width conformal (kW)": 166.8,
+        "interval score raw (kW)": 259.2,
+        "interval score conformal (kW)": 230.3
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather +envelope",
+        "fold": "summer 2025 (Jul\u2013Sep)",
+        "coverage raw (%)": 66.4,
+        "coverage conformal (%)": 78.5,
+        "width raw (kW)": 153.8,
+        "width conformal (kW)": 175.6,
+        "interval score raw (kW)": 244.9,
+        "interval score conformal (kW)": 232.3
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather +envelope",
+        "fold": "autumn 2025 (Oct\u201319 Nov)",
+        "coverage raw (%)": 72.3,
+        "coverage conformal (%)": 77.6,
+        "width raw (kW)": 91.5,
+        "width conformal (kW)": 99.8,
+        "interval score raw (kW)": 137.8,
+        "interval score conformal (kW)": 137.9
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather +envelope",
+        "fold": "winter hold-out (19 Nov\u201318 Jan)",
+        "coverage raw (%)": 71.7,
+        "coverage conformal (%)": 74.7,
+        "width raw (kW)": 48.0,
+        "width conformal (kW)": 52.7,
+        "interval score raw (kW)": 81.8,
+        "interval score conformal (kW)": 81.4
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather +envelope",
+        "fold": "pooled",
+        "coverage raw (%)": 66.1,
+        "coverage conformal (%)": 78.1,
+        "width raw (kW)": 119.5,
+        "width conformal (kW)": 137.2,
+        "interval score raw (kW)": 200.8,
+        "interval score conformal (kW)": 187.1
+      }
+    ],
+    "decisions": [
+      {
+        "component": "weather features",
+        "rule": "day-ahead MAE \u2264 \u22123 %, 90 % interval < 0, intraday not worse",
+        "evidence": "day-ahead -35.3 % [-38.6, -31.8], intraday -22.2 % [-24.9, -19.4]",
+        "adopted": true
+      },
+      {
+        "component": "learned envelope",
+        "rule": "MAE not higher with weather in place AND transfer bias on Elia \u221230 %",
+        "evidence": "MAE change given weather: intraday -1.4 % [-2.5, -0.4], day-ahead -1.3 % [-2.3, -0.4]; transfer bias 2.25 \u2192 1.64 % of capacity (-27 %)",
+        "adopted": false
+      },
+      {
+        "component": "conformal band",
+        "rule": "mean |coverage \u2212 80| and interval score both fall",
+        "evidence": "|coverage \u2212 80|: 14.8 \u2192 2.0 pts; interval score 206 \u2192 186 kW",
+        "adopted": true
+      },
+      {
+        "component": "LightGBM",
+        "rule": "(decided by speed: the previous release's bake-off put it 2\u20132.5 % ahead of GBR at about 1/100 of the fit time)",
+        "evidence": "0.7 s per quantile model here (40 fits timed, median 0.7 s); previous release's bake-off, all blocks per seed: 480 s scikit-learn GBR vs 4 s LightGBM",
+        "adopted": true
+      }
     ]
   },
-  "blocks": {
-    "intraday": {
-      "leads_h": [
-        0.0,
-        6.0
-      ],
-      "issue_hours_utc": [
-        4,
-        6,
-        8,
-        10,
-        12,
-        14,
-        16,
-        18
-      ]
+  "holdout_vs_previous_release": [
+    {
+      "block": "intraday",
+      "model": "previous release (history-only, scikit-learn)",
+      "slots": 5265,
+      "nMAE (%)": 1.87,
+      "skill vs persistence (%)": 26.06,
+      "coverage raw (%)": 71.7,
+      "bias (kW)": -0.24
     },
-    "day_ahead": {
-      "leads_h": [
-        6.0,
-        24.0
-      ],
-      "issue_hours_utc": [
-        0,
-        6,
-        12,
-        18
-      ]
+    {
+      "block": "intraday",
+      "model": "current release (+weather)",
+      "slots": 5265,
+      "nMAE (%)": 1.69,
+      "skill vs persistence (%)": 33.75,
+      "coverage raw (%)": 69.74,
+      "bias (kW)": 2.46
+    },
+    {
+      "block": "day_ahead",
+      "model": "previous release (history-only, scikit-learn)",
+      "slots": 5253,
+      "nMAE (%)": 2.38,
+      "skill vs persistence (%)": 4.78,
+      "coverage raw (%)": 67.3,
+      "bias (kW)": -2.64
+    },
+    {
+      "block": "day_ahead",
+      "model": "current release (+weather)",
+      "slots": 5253,
+      "nMAE (%)": 1.74,
+      "skill vs persistence (%)": 31.1,
+      "coverage raw (%)": 70.32,
+      "bias (kW)": 1.07
     }
-  },
-  "envelope": {
-    "kw_per_wm2": 0.798429,
-    "max_kw": 661.8,
-    "n_slots": 26111,
-    "quantile": 0.995,
-    "method": "quantile of pv / clear-sky GHI over slots with clear-sky GHI >= 200 W/m\u00b2 (Ineichen, TL=3)"
-  },
-  "n_train": {
-    "intraday": 95736,
-    "day_ahead": 104108
-  },
-  "holdout_by_block": {
-    "intraday": {
-      "n": 5265,
-      "mae_kw": 18.194,
-      "rmse_kw": 24.73,
-      "bias_kw": -0.245,
-      "nmae_capacity_pct": 1.868,
-      "r2": 0.514,
-      "coverage_p10_p90_pct": 71.7,
-      "persistence_mae_kw": 24.608,
-      "skill_vs_persistence_pct": 26.06,
-      "clear_sky_persistence_mae_kw": 20.838
+  ],
+  "external_elia": {
+    "by_window": [
+      {
+        "block": "intraday",
+        "configuration": "base",
+        "window": "same 60 days as Copal's hold-out",
+        "slots": 5265,
+        "nMAE (% of capacity)": 3.8548878611,
+        "skill vs persistence (%)": 23.4007020577,
+        "bias (kW)": -16.9181057378,
+        "P10\u2013P90 coverage, raw (%)": 57.9487179487,
+        "coverage conformal (%)": 69.8385565052
+      },
+      {
+        "block": "intraday",
+        "configuration": "base",
+        "window": "new period (19 Jan \u2192 30 Sep 2026)",
+        "slots": 35139,
+        "nMAE (% of capacity)": 5.3763717198,
+        "skill vs persistence (%)": 28.5557295072,
+        "bias (kW)": 6.771409149,
+        "P10\u2013P90 coverage, raw (%)": 80.2043313697,
+        "coverage conformal (%)": 81.4138137113
+      },
+      {
+        "block": "intraday",
+        "configuration": "base",
+        "window": "all",
+        "slots": 40404,
+        "nMAE (% of capacity)": 5.1781088617,
+        "skill vs persistence (%)": 28.0862325089,
+        "bias (kW)": 3.684454989,
+        "P10\u2013P90 coverage, raw (%)": 77.3042273042,
+        "coverage conformal (%)": 79.9054549055
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather",
+        "window": "same 60 days as Copal's hold-out",
+        "slots": 5265,
+        "nMAE (% of capacity)": 3.5287646085,
+        "skill vs persistence (%)": 29.8809974887,
+        "bias (kW)": -11.3428077148,
+        "P10\u2013P90 coverage, raw (%)": 52.8395061728,
+        "coverage conformal (%)": 71.3200379867
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather",
+        "window": "new period (19 Jan \u2192 30 Sep 2026)",
+        "slots": 35139,
+        "nMAE (% of capacity)": 4.9297688265,
+        "skill vs persistence (%)": 34.4904415343,
+        "bias (kW)": 19.1011941161,
+        "P10\u2013P90 coverage, raw (%)": 70.5768519309,
+        "coverage conformal (%)": 82.3643245397
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather",
+        "window": "all",
+        "slots": 40404,
+        "nMAE (% of capacity)": 4.7472055356,
+        "skill vs persistence (%)": 34.0706338486,
+        "bias (kW)": 15.1340703254,
+        "P10\u2013P90 coverage, raw (%)": 68.2655182655,
+        "coverage conformal (%)": 80.9251559252
+      },
+      {
+        "block": "intraday",
+        "configuration": "+envelope",
+        "window": "same 60 days as Copal's hold-out",
+        "slots": 5265,
+        "nMAE (% of capacity)": 4.4205050072,
+        "skill vs persistence (%)": 12.1614967014,
+        "bias (kW)": 14.0149896955,
+        "P10\u2013P90 coverage, raw (%)": 58.5565052232,
+        "coverage conformal (%)": 69.9145299145
+      },
+      {
+        "block": "intraday",
+        "configuration": "+envelope",
+        "window": "new period (19 Jan \u2192 30 Sep 2026)",
+        "slots": 35139,
+        "nMAE (% of capacity)": 4.8934640782,
+        "skill vs persistence (%)": 34.9728795783,
+        "bias (kW)": 0.8210761673,
+        "P10\u2013P90 coverage, raw (%)": 74.6236375537,
+        "coverage conformal (%)": 79.518483736
+      },
+      {
+        "block": "intraday",
+        "configuration": "+envelope",
+        "window": "all",
+        "slots": 40404,
+        "nMAE (% of capacity)": 4.8318333113,
+        "skill vs persistence (%)": 32.8953201679,
+        "bias (kW)": 2.540360266,
+        "P10\u2013P90 coverage, raw (%)": 72.5299475299,
+        "coverage conformal (%)": 78.267003267
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather +envelope",
+        "window": "same 60 days as Copal's hold-out",
+        "slots": 5265,
+        "nMAE (% of capacity)": 4.1658600721,
+        "skill vs persistence (%)": 17.2214683429,
+        "bias (kW)": 23.8836386363,
+        "P10\u2013P90 coverage, raw (%)": 49.7815764482,
+        "coverage conformal (%)": 74.245014245
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather +envelope",
+        "window": "new period (19 Jan \u2192 30 Sep 2026)",
+        "slots": 35139,
+        "nMAE (% of capacity)": 3.9633265608,
+        "skill vs persistence (%)": 47.3330733768,
+        "bias (kW)": 3.9680463984,
+        "P10\u2013P90 coverage, raw (%)": 71.6241213467,
+        "coverage conformal (%)": 79.5270212584
+      },
+      {
+        "block": "intraday",
+        "configuration": "+weather +envelope",
+        "window": "all",
+        "slots": 40404,
+        "nMAE (% of capacity)": 3.9897184759,
+        "skill vs persistence (%)": 44.5906421644,
+        "bias (kW)": 6.5632249237,
+        "P10\u2013P90 coverage, raw (%)": 68.7778437778,
+        "coverage conformal (%)": 78.8387288387
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "base",
+        "window": "same 60 days as Copal's hold-out",
+        "slots": 5302,
+        "nMAE (% of capacity)": 4.9067282803,
+        "skill vs persistence (%)": 2.976502358,
+        "bias (kW)": -16.9982513207,
+        "P10\u2013P90 coverage, raw (%)": 51.1127876273,
+        "coverage conformal (%)": 72.5952470766
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "base",
+        "window": "new period (19 Jan \u2192 30 Sep 2026)",
+        "slots": 38864,
+        "nMAE (% of capacity)": 7.3401418349,
+        "skill vs persistence (%)": -3.9625505265,
+        "bias (kW)": 7.8788220111,
+        "P10\u2013P90 coverage, raw (%)": 75.4502881844,
+        "coverage conformal (%)": 80.8974886785
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "base",
+        "window": "all",
+        "slots": 44166,
+        "nMAE (% of capacity)": 7.0480176066,
+        "skill vs persistence (%)": -3.3448346988,
+        "bias (kW)": 4.8924016242,
+        "P10\u2013P90 coverage, raw (%)": 72.5286419418,
+        "coverage conformal (%)": 79.9008286918
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather",
+        "window": "same 60 days as Copal's hold-out",
+        "slots": 5302,
+        "nMAE (% of capacity)": 3.7826454485,
+        "skill vs persistence (%)": 25.2036243329,
+        "bias (kW)": -11.3061022249,
+        "P10\u2013P90 coverage, raw (%)": 52.0935496039,
+        "coverage conformal (%)": 71.0298000754
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather",
+        "window": "new period (19 Jan \u2192 30 Sep 2026)",
+        "slots": 38864,
+        "nMAE (% of capacity)": 5.1951469279,
+        "skill vs persistence (%)": 26.4182168224,
+        "bias (kW)": 23.8069419495,
+        "P10\u2013P90 coverage, raw (%)": 70.9757101688,
+        "coverage conformal (%)": 81.5742074928
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather",
+        "window": "all",
+        "slots": 44166,
+        "nMAE (% of capacity)": 5.0255802285,
+        "skill vs persistence (%)": 26.3100935645,
+        "bias (kW)": 19.5917229979,
+        "P10\u2013P90 coverage, raw (%)": 68.7089616447,
+        "coverage conformal (%)": 80.3083820133
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+envelope",
+        "window": "same 60 days as Copal's hold-out",
+        "slots": 5302,
+        "nMAE (% of capacity)": 5.9644743853,
+        "skill vs persistence (%)": -17.9389062111,
+        "bias (kW)": 18.9813901875,
+        "P10\u2013P90 coverage, raw (%)": 45.3036589966,
+        "coverage conformal (%)": 73.8023387401
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+envelope",
+        "window": "new period (19 Jan \u2192 30 Sep 2026)",
+        "slots": 38864,
+        "nMAE (% of capacity)": 6.8025263949,
+        "skill vs persistence (%)": 3.6519988382,
+        "bias (kW)": 2.0934885309,
+        "P10\u2013P90 coverage, raw (%)": 65.0859407163,
+        "coverage conformal (%)": 79.6444009881
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+envelope",
+        "window": "all",
+        "slots": 44166,
+        "nMAE (% of capacity)": 6.7019206856,
+        "skill vs persistence (%)": 1.7299723015,
+        "bias (kW)": 4.1208320663,
+        "P10\u2013P90 coverage, raw (%)": 62.7111352624,
+        "coverage conformal (%)": 78.9430783861
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather +envelope",
+        "window": "same 60 days as Copal's hold-out",
+        "slots": 5302,
+        "nMAE (% of capacity)": 4.6929161078,
+        "skill vs persistence (%)": 7.2043306845,
+        "bias (kW)": 24.2195139929,
+        "P10\u2013P90 coverage, raw (%)": 46.3787250094,
+        "coverage conformal (%)": 74.5567710298
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather +envelope",
+        "window": "new period (19 Jan \u2192 30 Sep 2026)",
+        "slots": 38864,
+        "nMAE (% of capacity)": 4.2854300878,
+        "skill vs persistence (%)": 39.3030472631,
+        "bias (kW)": 8.7211533732,
+        "P10\u2013P90 coverage, raw (%)": 69.856422396,
+        "coverage conformal (%)": 79.0500205846
+      },
+      {
+        "block": "day_ahead",
+        "configuration": "+weather +envelope",
+        "window": "all",
+        "slots": 44166,
+        "nMAE (% of capacity)": 4.3343476008,
+        "skill vs persistence (%)": 36.445613315,
+        "bias (kW)": 10.5816865437,
+        "P10\u2013P90 coverage, raw (%)": 67.0379930263,
+        "coverage conformal (%)": 78.5106190282
+      }
+    ],
+    "transfer_bias_pct_of_capacity": {
+      "base": 1.789,
+      "+weather": 2.248,
+      "+envelope": 1.797,
+      "+weather +envelope": 1.643
     },
-    "day_ahead": {
-      "n": 5253,
-      "mae_kw": 23.229,
-      "rmse_kw": 29.981,
-      "bias_kw": -2.636,
-      "nmae_capacity_pct": 2.385,
-      "r2": 0.286,
-      "coverage_p10_p90_pct": 67.3,
-      "persistence_mae_kw": 24.395,
-      "skill_vs_persistence_pct": 4.78,
-      "clear_sky_persistence_mae_kw": 24.646
-    }
-  },
-  "holdout_by_horizon": {
-    "< 1 h": {
-      "n": 960,
-      "mae_kw": 12.085,
-      "rmse_kw": 17.633,
-      "bias_kw": -0.563,
-      "nmae_capacity_pct": 1.241,
-      "r2": 0.752,
-      "coverage_p10_p90_pct": 75.2,
-      "persistence_mae_kw": 23.708,
-      "skill_vs_persistence_pct": 49.03
-    },
-    "1\u20136 h": {
-      "n": 4305,
-      "mae_kw": 19.557,
-      "rmse_kw": 26.05,
-      "bias_kw": -0.174,
-      "nmae_capacity_pct": 2.008,
-      "r2": 0.46,
-      "coverage_p10_p90_pct": 70.9,
-      "persistence_mae_kw": 24.809,
-      "skill_vs_persistence_pct": 21.17
-    },
-    "day-ahead (6\u201324 h)": {
-      "n": 5253,
-      "mae_kw": 23.229,
-      "rmse_kw": 29.981,
-      "bias_kw": -2.636,
-      "nmae_capacity_pct": 2.385,
-      "r2": 0.286,
-      "coverage_p10_p90_pct": 67.3,
-      "persistence_mae_kw": 24.395,
-      "skill_vs_persistence_pct": 4.78
-    }
+    "next_day_benchmark": [
+      {
+        "window": "same 60 days as Copal's hold-out",
+        "forecast": "base",
+        "slots": 1768.0,
+        "nMAE (% of capacity)": 4.9792854535,
+        "bias (kW)": -18.1821000296,
+        "R\u00b2": 0.1597636795,
+        "coverage (%)": 52.2624434389
+      },
+      {
+        "window": "same 60 days as Copal's hold-out",
+        "forecast": "+weather",
+        "slots": 1768.0,
+        "nMAE (% of capacity)": 3.8047334916,
+        "bias (kW)": -11.8566346411,
+        "R\u00b2": 0.4809255071,
+        "coverage (%)": 51.9230769231
+      },
+      {
+        "window": "same 60 days as Copal's hold-out",
+        "forecast": "+envelope",
+        "slots": 1768.0,
+        "nMAE (% of capacity)": 5.9743815228,
+        "bias (kW)": 19.2232346742,
+        "R\u00b2": 0.0916182193,
+        "coverage (%)": 46.6628959276
+      },
+      {
+        "window": "same 60 days as Copal's hold-out",
+        "forecast": "+weather +envelope",
+        "slots": 1768.0,
+        "nMAE (% of capacity)": 4.7042267911,
+        "bias (kW)": 23.8356520617,
+        "R\u00b2": 0.4069428651,
+        "coverage (%)": 48.4728506787
+      },
+      {
+        "window": "same 60 days as Copal's hold-out",
+        "forecast": "+weather +envelope, conformal band",
+        "slots": 1768.0,
+        "nMAE (% of capacity)": 4.7042267911,
+        "bias (kW)": 23.8356520617,
+        "R\u00b2": 0.4069428651,
+        "coverage (%)": 75.5090497738
+      },
+      {
+        "window": "same 60 days as Copal's hold-out",
+        "forecast": "Elia day-ahead 6 PM",
+        "slots": 1768.0,
+        "nMAE (% of capacity)": 2.5793512034,
+        "bias (kW)": 3.1863522457,
+        "R\u00b2": 0.7113534281,
+        "coverage (%)": 77.9977375566
+      },
+      {
+        "window": "same 60 days as Copal's hold-out",
+        "forecast": "persistence (24 h)",
+        "slots": 1768.0,
+        "nMAE (% of capacity)": 5.096942829,
+        "bias (kW)": -1.1283938908,
+        "R\u00b2": 0.0795940134,
+        "coverage (%)": null
+      },
+      {
+        "window": "new period (19 Jan \u2192 30 Sep 2026)",
+        "forecast": "base",
+        "slots": 12494.0,
+        "nMAE (% of capacity)": 7.6804632268,
+        "bias (kW)": 7.5198792063,
+        "R\u00b2": 0.6250541084,
+        "coverage (%)": 74.5477829358
+      },
+      {
+        "window": "new period (19 Jan \u2192 30 Sep 2026)",
+        "forecast": "+weather",
+        "slots": 12494.0,
+        "nMAE (% of capacity)": 5.4319903032,
+        "bias (kW)": 24.9889272832,
+        "R\u00b2": 0.8082112889,
+        "coverage (%)": 70.3457659677
+      },
+      {
+        "window": "new period (19 Jan \u2192 30 Sep 2026)",
+        "forecast": "+envelope",
+        "slots": 12494.0,
+        "nMAE (% of capacity)": 7.1856041825,
+        "bias (kW)": 0.7451942553,
+        "R\u00b2": 0.6667960721,
+        "coverage (%)": 64.7110613094
+      },
+      {
+        "window": "new period (19 Jan \u2192 30 Sep 2026)",
+        "forecast": "+weather +envelope",
+        "slots": 12494.0,
+        "nMAE (% of capacity)": 4.4670106858,
+        "bias (kW)": 9.5619516872,
+        "R\u00b2": 0.8639292178,
+        "coverage (%)": 69.8095085641
+      },
+      {
+        "window": "new period (19 Jan \u2192 30 Sep 2026)",
+        "forecast": "+weather +envelope, conformal band",
+        "slots": 12494.0,
+        "nMAE (% of capacity)": 4.4670106858,
+        "bias (kW)": 9.5619516872,
+        "R\u00b2": 0.8639292178,
+        "coverage (%)": 79.2700496238
+      },
+      {
+        "window": "new period (19 Jan \u2192 30 Sep 2026)",
+        "forecast": "Elia day-ahead 6 PM",
+        "slots": 12494.0,
+        "nMAE (% of capacity)": 3.7763098259,
+        "bias (kW)": 19.1174711646,
+        "R\u00b2": 0.9124969089,
+        "coverage (%)": 76.180566672
+      },
+      {
+        "window": "new period (19 Jan \u2192 30 Sep 2026)",
+        "forecast": "persistence (24 h)",
+        "slots": 12494.0,
+        "nMAE (% of capacity)": 7.2787181171,
+        "bias (kW)": -0.4853060849,
+        "R\u00b2": 0.5964944359,
+        "coverage (%)": null
+      },
+      {
+        "window": "all",
+        "forecast": "base",
+        "slots": 14262.0,
+        "nMAE (% of capacity)": 7.3456096086,
+        "bias (kW)": 4.3337132205,
+        "R\u00b2": 0.65302272,
+        "coverage (%)": 71.7851633712
+      },
+      {
+        "window": "all",
+        "forecast": "+weather",
+        "slots": 14262.0,
+        "nMAE (% of capacity)": 5.2302661381,
+        "bias (kW)": 20.4213383418,
+        "R\u00b2": 0.8202790594,
+        "coverage (%)": 68.0619828916
+      },
+      {
+        "window": "all",
+        "forecast": "+envelope",
+        "slots": 14262.0,
+        "nMAE (% of capacity)": 7.0354540169,
+        "bias (kW)": 3.0358390078,
+        "R\u00b2": 0.6875973292,
+        "coverage (%)": 62.4737063525
+      },
+      {
+        "window": "all",
+        "forecast": "+weather +envelope",
+        "slots": 14262.0,
+        "nMAE (% of capacity)": 4.4964173661,
+        "bias (kW)": 11.3314021333,
+        "R\u00b2": 0.8668555586,
+        "coverage (%)": 67.1644930585
+      },
+      {
+        "window": "all",
+        "forecast": "+weather +envelope, conformal band",
+        "slots": 14262.0,
+        "nMAE (% of capacity)": 4.4964173661,
+        "bias (kW)": 11.3314021333,
+        "R\u00b2": 0.8668555586,
+        "coverage (%)": 78.8038143318
+      },
+      {
+        "window": "all",
+        "forecast": "Elia day-ahead 6 PM",
+        "slots": 14262.0,
+        "nMAE (% of capacity)": 3.6279279128,
+        "bias (kW)": 17.1425575306,
+        "R\u00b2": 0.9167036113,
+        "coverage (%)": 76.4058336839
+      },
+      {
+        "window": "all",
+        "forecast": "persistence (24 h)",
+        "slots": 14262.0,
+        "nMAE (% of capacity)": 7.0082526347,
+        "bias (kW)": -0.5650269684,
+        "R\u00b2": 0.6261880523,
+        "coverage (%)": null
+      }
+    ]
   },
   "environment": {
-    "python": "3.11.9",
-    "numpy": "1.26.4",
-    "pandas": "2.2.3",
-    "scikit-learn": "1.5.2",
-    "lightgbm": "4.5.0",
-    "xgboost": "2.1.3",
-    "joblib": "1.4.2"
+    "lightgbm": "4.7.0",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6"
   }
 }

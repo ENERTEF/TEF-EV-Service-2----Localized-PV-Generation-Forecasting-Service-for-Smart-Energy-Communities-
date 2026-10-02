@@ -4,7 +4,6 @@
 **TEF:** TEF EV – Leneda (Luxembourg)
 **End User:** EMOT EMOTION SRL
 **Site:** Copal Supermarket Energy Community (ECC)
-**Version:** 1
 **Last Updated:** 20 Jan 2026
 
 ---
@@ -412,23 +411,30 @@ Required technical artifacts include:
 
 ---
 
-# 7. Implementation in this Repository (version 1.0)
+# 7. Implementation in this Repository
 
 | Path | Content |
 | ---- | ------- |
 | [`ECC_PV_Forecasting.ipynb`](ECC_PV_Forecasting.ipynb) | Self-contained implementation: data → physics features → algorithm selection → training → evaluation → export |
 | [`Technical Description.md`](Technical%20Description.md) | What was built, the algorithm selection and the results |
 | `Data/ECC_master_PV_EMOB1_EMOB2_15min.csv` | Leneda 15-minute ECC series (`PV_TotalProduction_kW` is the forecast target) |
-| `Data/models/` | Trained models (`.joblib`), plant envelope, metrics, algorithm bake-off and model card — published on Hugging Face as [`EnerTEF/Service2-PvForecast`](https://huggingface.co/EnerTEF/Service2-PvForecast) |
+| `Data/models/` | The Hugging Face package: trained models (LightGBM text), `model_config.json` (feature order, envelope, weather specification, frozen band offsets), model card, `example.py` + `example_features.csv` (a short run-the-models script and a small real-data sample), pinned `requirements.txt`, `LICENSE` and validation metrics — for Hugging Face as [`EnerTEF/EV-Service2-Localized-PV-Generation-Forecasting-Service-for-Smart-Energy-Communities`](https://huggingface.co/EnerTEF/EV-Service2-Localized-PV-Generation-Forecasting-Service-for-Smart-Energy-Communities) (upload is opt-in, notebook §13) |
 | `requirements.txt` | Python dependencies |
 
 **Implemented scope:** intraday (up to 6 h) and day-ahead (up to 24 h) P10 / P50 / P90 PV forecasts
 at 15-minute resolution, bounded by a fitted plant envelope and scored against persistence. The
-optional 48-hour and 7-day horizons are not part of version 1.0.
+optional 48-hour and 7-day horizons are not part of this service.
 
 **Quickstart**
 
 ```bash
+py -3.11 -m venv .venv
+.venv\Scripts\activate            # macOS / Linux: python3.11 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 jupyter lab ECC_PV_Forecasting.ipynb
 ```
+
+Run all cells from the repository root. The notebook downloads the Open-Meteo previous-run weather series (and, for the
+external check, the Elia series) into `Data/external/` on first run. The models are exported as LightGBM text plus JSON —
+no pickle, no scikit-learn — and the package carries its own pinned `Data/models/requirements.txt` and an `example.py`
+that runs them on a small real-data sample.
