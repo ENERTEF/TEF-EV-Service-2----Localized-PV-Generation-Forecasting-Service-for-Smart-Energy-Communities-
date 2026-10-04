@@ -1,0 +1,2 @@
+# LightGBM text models must stay LF: a CRLF checkout (Windows, core.autocrlf=true) makes LightGBM abort when loading them.
+Data/models/*.txt text eol=lf

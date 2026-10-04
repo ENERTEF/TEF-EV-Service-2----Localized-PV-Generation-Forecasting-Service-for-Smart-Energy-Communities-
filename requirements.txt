@@ -1,7 +1,7 @@
 # Service 2 — Localised PV Generation Forecasting (ECC_PV_Forecasting.ipynb)
 # The models are LightGBM text files, so no version-bound scikit-learn is needed to load them; the
 # notebook does need scikit-learn because it fits the envelope experiments through LightGBM's
-# scikit-learn API (lgb.LGBMRegressor). Reference run lightgbm 4.6.0 · numpy 2.1.3 · pandas 2.3.3
+# scikit-learn API (lgb.LGBMRegressor). Reference run lightgbm 4.7.0 · numpy 2.4.6 · pandas 3.0.6
 # (recorded in Data/models/model_config.json).
 numpy>=1.26
 pandas>=2.2
